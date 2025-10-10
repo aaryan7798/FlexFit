@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gym Owner Registration</title>
+</head>
+<body>
+    <h2>Register Gym Owner</h2>
+    <form th:action="@{/gymowner/register}" th:object="${gymOwner}" method="post" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" /><br>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" /><br>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" /><br>
+        <label>Phone:</label>
+        <input type="text" th:field="*{phone}" /><br>
+        <label>Gym Name:</label>
+        <input type="text" th:field="*{gymName}" /><br>
+        <label>Gym Address:</label>
+        <input type="text" th:field="*{gymAddress}" /><br>
+        <label>Gym Photos:</label>
+        <input type="file" name="gymPhotos" multiple /><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

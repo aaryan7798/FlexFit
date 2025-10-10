@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+<h2>Admin Dashboard: Gym Owners</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gym Name</th>
+            <th>Contact</th>
+            <th>Subscription Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="owner : ${gyms}">
+            <td th:text="${owner.name}"></td>
+            <td th:text="${owner.email}"></td>
+            <td th:text="${owner.gymName}"></td>
+            <td th:text="${owner.contactNumber}"></td>
+            <td th:text="${owner.subscriptionStatus}"></td>
+            <td>
+                <a th:href="@{/superadmin/gymowner/edit/{id}(id=${owner.id})}">Edit</a>
+                <form th:action="@{/superadmin/gymowner/delete/{id}(id=${owner.id})}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Delete this gym owner?');">Delete</button>
+                </form>
+                <form th:action="@{/superadmin/gymowner/deactivate/{id}(id=${owner.id})}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Deactivate this gym owner?');">Deactivate</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
